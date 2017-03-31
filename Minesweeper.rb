@@ -1,4 +1,5 @@
 require_relative "Board"
+require "byebug"
 
 class Minesweeper
 
@@ -8,7 +9,28 @@ class Minesweeper
   end
 
   def run
-    @board.render
+    while !@board.game_over
+      @board.render
+      round
+    end
+  end
+
+  def round
+    puts "Enter guess coordinates"
+    pos = gets.chomp.split(",").map(&:to_i)
+    until  valid_pos?(pos)
+      puts "Invalid position. Enter a correct position"
+      pos = gets.chomp.split(",")
+    end
+
+  end
+
+  def valid_pos?(array)
+    if (0..8).include?(array[0]) && (0..8).include?(array[1])
+      true
+    else
+      false
+    end
   end
 
 end
