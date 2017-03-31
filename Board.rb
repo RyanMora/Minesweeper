@@ -20,9 +20,10 @@ class Board
     tile = @grid[pos[0]][pos[1]]
     tile.make_revealed
     if tile.mine
+      tile.make_revealed
       @game_over = true
     else
-      
+
     end
   end
 
@@ -31,14 +32,18 @@ class Board
 
       row.each do |tile|
         if tile.revealed
-          tile.number_of_mines > 0 ? print(" #{tile.number_of_mines} ") : print("    ")
-        else
-
-          if tile.mine
-            print(" * ".red)
+          if !tile.mine
+            tile.number_of_mines > 0 ? print(" #{tile.number_of_mines} ") : print("   ")
           else
-            tile.number_of_mines > 0 ? print(" #{tile.number_of_mines} ") : print(" * ")
+            print(" X ".red)
           end
+        else
+          print " * "
+          # if tile.mine
+          #   print(" * ".red)
+          # else
+          #   tile.number_of_mines > 0 ? print(" #{tile.number_of_mines} ") : print(" * ")
+          # end
         end
       end
       puts ""

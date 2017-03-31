@@ -13,6 +13,8 @@ class Minesweeper
       @board.render
       round
     end
+    @board.render
+    puts "GAME OVER!!!!!! NICE TRY"
   end
 
   def round
@@ -22,7 +24,7 @@ class Minesweeper
       puts "Invalid position. Enter a correct position"
       pos = gets.chomp.split(",")
     end
-
+    @board.check_tile(pos)
   end
 
   def valid_pos?(array)
