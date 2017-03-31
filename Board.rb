@@ -22,6 +22,7 @@ class Board
     if tile.mine
       tile.make_revealed
       @game_over = true
+      @grid.flatten.each{|tile| tile.make_revealed if tile.mine}
     else
 
     end
